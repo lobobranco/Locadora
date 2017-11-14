@@ -17,19 +17,19 @@ public class Sistema {
 		int opc = teclado.nextInt();
 		fimn=opc;
 		switch (opc) {
-		case 1: System.out.println("Teste Filme");
+		case 1: System.out.println("Teste Filme\n");
 		break;
-		case 2: System.out.println("Teste Copia");
+		case 2: System.out.println("Teste Copia\n");
 		break;
-		case 3: System.out.println("Teste Socio");
+		case 3: System.out.println("Teste Socio\n");
 		break;
-		case 4: System.out.println("Teste locação");
+		case 4: System.out.println("Teste locação\n");
 		break;
-		case 5: System.out.println("Teste devolucao");
+		case 5: System.out.println("Teste devolucao\n");
 		break;
-		case 6: System.out.println("Teste fim");
+		case 6: System.out.println("Teste fim\n");
 		break;
-		default: System.out.println("Opção inválida");
+		default: System.out.println("Opção inválida\n");
 		break;
 		}
 	} while (fimn != 6); 
