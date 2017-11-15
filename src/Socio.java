@@ -1,13 +1,15 @@
-
 public class Socio {
 	private String nome;
 	private String endereco;
-	private String telefone;
+	private int telefone;
 	private String rg;
 	private String cpf;
 	private String data;
 	
-	public Socio(String nome, String endereco, String telefone, String rg, String cpf, String data) {
+	public Socio() {
+	}
+	
+	public Socio(String nome, String endereco, int telefone, String rg, String cpf, String data) {
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;
@@ -22,7 +24,7 @@ public class Socio {
 	public String getEndereco() {
 		return endereco;
 	}
-	public String getTelefone() {
+	public int getTelefone() {
 		return telefone;
 	}
 	public String getRg() {
