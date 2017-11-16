@@ -22,25 +22,31 @@ public class Sistema {
 			fimn=opc;
 
 			switch (opc) {
-			case 1: config.perguntas();
+			case 1: 
+				config.perguntas();
 			break;
-			case 2: Scanner teclado2 = new Scanner(System.in);
+			case 2: 
+				Scanner teclado2 = new Scanner(System.in);
 			System.out.println("Digite o nome do filme que você quer copiar:");
 			String nome = teclado2.nextLine();
 			config.copiaFilme(nome);
 			break;
-			case 3: config.perguntas2();
+			case 3: 
+				config.perguntas2();
 			break;
-			case 4: System.out.println("Teste locação\n");
+			case 4: 
+				config.checarCopias();
+				//Escolher um item da lista e mudar o boolean pra True
 			break;
-			case 5: System.out.println("Teste devolucao\n");
+			case 5: 
+				//Informar a cópia e mudar o boolean pra False
 			break;
 			case 6:
 				config.checarFilmes();
 				break;
 			case 7: config.checarCopias();
 			break;
-			case 8: System.out.println("Teste fim\n");
+			case 8: System.out.println("Finalizando Sistema\n");
 			break;
 			default: System.out.println("Opção inválida\n");
 			break;
