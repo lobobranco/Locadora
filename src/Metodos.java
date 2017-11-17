@@ -25,53 +25,52 @@ public class Metodos {
 		String atores = teclado3.nextLine();
 		filme = new Filme(titulo, duracao, ano, formato, atores);
 		list.add(filme);
-		teclado2.close();
-		teclado3.close();
+		boolean alugado = false;
+		copia = new CopiaFilme(titulo, alugado);
+		cop.add(copia);
 		return filme;
 	}
 
 	public Socio perguntas2() {
-		Scanner teclado2 = new Scanner(System.in);
+		Scanner teclado5 = new Scanner(System.in);
 		System.out.println("Digite o nome do Sócio:");
-		String nome = teclado2.nextLine();
+		String nome = teclado5.nextLine();
 		System.out.println("Digite o endereço do Sócio:");
-		String endereco = teclado2.nextLine();
+		String endereco = teclado5.nextLine();
 		System.out.println("Digite o telefone do Sócio:");
-		int telefone = teclado2.nextInt();
+		int telefone = teclado5.nextInt();
 		System.out.println("Digite o RG do Sócio");
-		Scanner teclado3 = new Scanner(System.in);
-		String rg = teclado3.nextLine();
+		Scanner teclado6 = new Scanner(System.in);
+		String rg = teclado6.nextLine();
 		System.out.println("Digite o CPF do Sócio:");
-		String cpf = teclado3.nextLine();
+		String cpf = teclado6.nextLine();
 		System.out.println("Digite a data de adesão do Sócio:");
-		String data = teclado3.nextLine();
+		String data = teclado6.nextLine();
 		socio = new Socio(nome, endereco, telefone, rg, cpf, data);
 		soc.add(socio);
-		teclado2.close();
-		teclado3.close();
 		return socio;
 	}
 	public void checarFilmes() {
 		for (int i = 0; i < list.size(); i++) {
 			list.get(i);
-			System.out.println(filme.getTitulo());
+			System.out.println("Nome: " + filme.getTitulo());
+			System.out.println("Duração: " + filme.getDuracao());
+			System.out.println("Ano: " + filme.getAno());
+			System.out.println("Formato: "+ filme.getFormato());
+			System.out.println("Principais Atores: " + filme.getAtores());
 		}
 	}
 
 	public void copiaFilme(String nome) {
-		Scanner teclado4 = new Scanner(System.in);
 		for (int i = 0; i < list.size(); i++) {
 			list.get(i);
-			if (filme.getTitulo() == nome) {
-				System.out.println("Digite uma ID para a cópia: ");
-				String id = teclado4.nextLine();
+			if (filme.getTitulo().equals(nome)) {
 				boolean alugado = false;
-				CopiaFilme copia = new CopiaFilme(nome,id, alugado);
+				CopiaFilme copia = new CopiaFilme(nome, alugado);
 				cop.add(copia);
-				teclado4.close();
 			}
 			else {
-				System.out.println("Este filme não esttá registrado.");
+				System.out.println("Este filme não está registrado.");
 			}
 		}
 	}
@@ -79,21 +78,59 @@ public class Metodos {
 	public void checarCopias() {
 		for (int i = 0; i < cop.size(); i++) {
 			cop.get(i);
+			System.out.println("Número de referência: " + i);
+			System.out.println("Nome do filme: " + copia.getNome());
+			System.out.println("Status: " + this.statusCopia());
 		}
 	}
-	
+
+	public void checarSocios() {
+		for (int i = 0; i < soc.size(); i++) {
+			soc.get(i);
+			System.out.println("Número: " + i);
+			System.out.println("Nome: " + socio.getNome());
+			System.out.println("Endereço: " + socio.getEndereco());
+			System.out.println("Telefone: " + socio.getTelefone());
+			System.out.println("RG: " + socio.getRg());
+			System.out.println("CPF: " + socio.getCpf());
+			System.out.println("Data: " + socio.getData());
+		}
+	}
+
 	public void locacao() {
 		Scanner teclado = new Scanner (System.in);
 		System.out.println("Digite o nome do filme que vai ser alugado:");
 		String alug = teclado.nextLine(); 
-		for (int i = 0; i < cop.size(); i++) {
-			cop.get(i);
-			if (copia.getNome() == alug) {
-				copia.setAlugado(true);
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i);
+			if (filme.getTitulo().equals(alug)) {
+				this.checarCopias();
+				if (copia.getAlugado() == false) {
+					System.out.println("Cópia alugada com sucesso!");
+					copia.setAlugado(true);
+				} else {
+					System.out.println("Não temos cópias disponíveis");
+				}
 			} else {
-				System.out.println("Não temos cópias disponíveis");
+				System.out.println("Esse filme não está listado");
 			}
+		}
 	}
-		teclado.close();
+
+	public String statusCopia() {
+		if (copia.getAlugado() == false) {
+			return ("Disponível");
+		} 
+		return ("Alugado");
+	}
+
+public void devolução() {
+	this.checarCopias();
+	if (copia.getAlugado() == true) {
+		copia.setAlugado(false);
+		System.out.println("Devolução feita com sucesso!");
+	}
 }
+
+
 }

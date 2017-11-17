@@ -1,19 +1,14 @@
 public class CopiaFilme {
 
-	private String id;
 	private String nome;
 	private boolean alugado;
 
 	public CopiaFilme() {
 	}
-	public CopiaFilme(String nome, String id, boolean alugado) {
+	
+	public CopiaFilme(String nome, boolean alugado) {
 		this.alugado = alugado;
-		this.id = id;
 		this.nome = nome;
-	}
-
-	public String getId() {
-		return id;
 	}
 
 	public String getNome() {
@@ -24,8 +19,7 @@ public class CopiaFilme {
 		this.alugado = alugado;
 	}
 
-	public boolean isAlugado() {
+	public boolean getAlugado() {
 		return alugado;
 	}
-
 }
