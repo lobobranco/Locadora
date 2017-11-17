@@ -10,6 +10,7 @@ public class Metodos {
 	Filme filme = new Filme();
 	CopiaFilme copia = new CopiaFilme();
 	Socio socio = new Socio();
+
 	public Filme perguntas() {
 		Scanner teclado2 = new Scanner(System.in);
 		System.out.println("Digite o título do filme:");
@@ -28,6 +29,8 @@ public class Metodos {
 		boolean alugado = false;
 		copia = new CopiaFilme(titulo, alugado);
 		cop.add(copia);
+		System.out.println("Filme cadastrado com sucesso!");
+		System.out.println("");
 		return filme;
 	}
 
@@ -48,16 +51,21 @@ public class Metodos {
 		String data = teclado6.nextLine();
 		socio = new Socio(nome, endereco, telefone, rg, cpf, data);
 		soc.add(socio);
+		System.out.println("Sócio cadastrado com sucesso!");
+		System.out.println("");
 		return socio;
 	}
+
 	public void checarFilmes() {
 		for (int i = 0; i < list.size(); i++) {
 			list.get(i);
+			System.out.println("Referência do filme: " + i);
 			System.out.println("Nome: " + filme.getTitulo());
 			System.out.println("Duração: " + filme.getDuracao());
 			System.out.println("Ano: " + filme.getAno());
 			System.out.println("Formato: "+ filme.getFormato());
 			System.out.println("Principais Atores: " + filme.getAtores());
+			System.out.println("");
 		}
 	}
 
@@ -68,9 +76,12 @@ public class Metodos {
 				boolean alugado = false;
 				CopiaFilme copia = new CopiaFilme(nome, alugado);
 				cop.add(copia);
+				System.out.println("Cópia feita com sucesso!");
+				System.out.println("");
 			}
 			else {
 				System.out.println("Este filme não está registrado.");
+				System.out.println("");
 			}
 		}
 	}
@@ -81,6 +92,7 @@ public class Metodos {
 			System.out.println("Número de referência: " + i);
 			System.out.println("Nome do filme: " + copia.getNome());
 			System.out.println("Status: " + this.statusCopia());
+			System.out.println("");
 		}
 	}
 
@@ -94,43 +106,77 @@ public class Metodos {
 			System.out.println("RG: " + socio.getRg());
 			System.out.println("CPF: " + socio.getCpf());
 			System.out.println("Data: " + socio.getData());
+			System.out.println("");
 		}
 	}
 
 	public void locacao() {
 		Scanner teclado = new Scanner (System.in);
-		System.out.println("Digite o nome do filme que vai ser alugado:");
-		String alug = teclado.nextLine(); 
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i);
-			if (filme.getTitulo().equals(alug)) {
-				this.checarCopias();
-				if (copia.getAlugado() == false) {
-					System.out.println("Cópia alugada com sucesso!");
+		System.out.println("Nome do Sócio: ");
+		String socio = teclado.nextLine();
+		if (this.pickSocio(socio) == true) {
+			System.out.println("Digite o nome do filme que vai ser alugado:");
+			String alug = teclado.nextLine(); 
+			if (this.pickFilme(alug) == true) {
+				if (this.pickCopia()==true) {
 					copia.setAlugado(true);
+					System.out.println("Cópia alugada com sucesso!");	
+					System.out.println("");
 				} else {
-					System.out.println("Não temos cópias disponíveis");
+					System.out.println("Não temos cópias disponíveis.");
+					System.out.println("");
 				}
 			} else {
-				System.out.println("Esse filme não está listado");
+				System.out.println("Esse filme não está listado.");
+				System.out.println("");
 			}
 		}
 	}
 
 	public String statusCopia() {
 		if (copia.getAlugado() == false) {
-			return ("Disponível");
+			return ("Disponível!");
 		} 
-		return ("Alugado");
+		return ("Alugado.");
 	}
 
-public void devolução() {
-	this.checarCopias();
-	if (copia.getAlugado() == true) {
-		copia.setAlugado(false);
-		System.out.println("Devolução feita com sucesso!");
+	public void devolução() {
+		this.pickCopia();
+		if (this.pickCopia() == false) {
+			copia.setAlugado(false);
+			System.out.println("Devolução feita com sucesso!");
+			System.out.println(""); 
+		}
 	}
-}
 
+	public boolean pickSocio(String nome) {
+		for (int i = 0; i < soc.size(); i++) {
+			soc.get(i);
+			if (socio.getNome().equals(nome)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean pickFilme (String nome) {
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i);
+			if (filme.getTitulo().equals(nome)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean pickCopia () {
+		for (int i = 0; i < cop.size(); i++) {
+			cop.get(i);
+			if (copia.getAlugado() == false) {
+				return true;
+			}
+		} 
+		return false;
+	}
 
 }

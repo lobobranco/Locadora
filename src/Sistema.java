@@ -49,11 +49,13 @@ public class Sistema {
 				break;
 			case 8:
 				config.checarSocios();
-			case 9: 
-				System.out.println("Finalizando Sistema\n");
+				break;
+			case 9:
+				System.out.println("Finalizando Sistema!");
 			break;
 			default: 
-				System.out.println("Opção inválida\n");
+				System.out.println("Opção inválida.");
+				System.out.println("");
 			break;
 			}
 		} while (fimn != 9); 
