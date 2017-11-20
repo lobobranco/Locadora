@@ -121,7 +121,6 @@ public class Metodos {
 			for (int i = 0; i < cop.size(); i++) {
 				cop.get(i);
 				if (cop.get(i).getNome().equals(alug)){
-					System.out.println("É igual");
 					String nome = cop.get(i).getNome();
 					boolean alugada = cop.get(i).setAlugado(false);
 					CopiaFilme copia2 = new CopiaFilme(nome, alugada);
@@ -141,14 +140,22 @@ public class Metodos {
 	}
 
 	public void devolução() {
+		Scanner teclado0 = new Scanner (System.in);
+		System.out.println("Qual o filme a ser devolvido: ");
+		String alug = teclado0.nextLine();
 		for (int i = 0; i < cop2.size(); i++) {
 			cop2.get(i);
+			if (cop2.get(i).getNome().equals(alug)) {
 			String nome = cop2.get(i).getNome();
 			boolean alugada = cop2.get(i).setAlugado(true);
 			CopiaFilme copia3 = new CopiaFilme(nome, alugada);
 			cop2.remove(i);
 			cop.add(copia3);
 			System.out.println("Devolução feita com sucesso!");
+		}
+			else {
+				System.out.println("Filme não está no registro de locação.");
+			}
 		}
 	}
 
@@ -171,7 +178,7 @@ public class Metodos {
 		}
 		return false;
 	}
-	
+
 	public void checarCopiasA( ) {
 		for (int i = 0; i < cop2.size(); i++) {
 			cop2.get(i);
