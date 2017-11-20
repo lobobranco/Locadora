@@ -9,6 +9,7 @@ public class Sistema {
 		System.out.println("Bem vindo ao Sistema!");
 
 		do {
+			System.out.println("*********************************************************");
 			System.out.println("1 - Cadastrar Filme");
 			System.out.println("2 - Cadastrar Cópia");
 			System.out.println("3 - Cadastrar Sócio");
@@ -20,6 +21,7 @@ public class Sistema {
 			System.out.println("9 - Lista de Sócios");
 			System.out.println("10 - Sair");
 			System.out.println("Digite sua opção: ");
+			System.out.println("*********************************************************");
 			int opc = teclado.nextInt();
 			fimn=opc;
 

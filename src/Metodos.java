@@ -60,12 +60,14 @@ public class Metodos {
 	public void checarFilmes() {
 		for (int i = 0; i < list.size(); i++) {
 			list.get(i);
+			System.out.println("*********************************************************");
 			System.out.println("Referência do filme: " + i);
 			System.out.println("Nome: " + filme.getTitulo());
 			System.out.println("Duração: " + filme.getDuracao());
 			System.out.println("Ano: " + filme.getAno());
 			System.out.println("Formato: "+ filme.getFormato());
 			System.out.println("Principais Atores: " + filme.getAtores());
+			System.out.println("*********************************************************");
 			System.out.println("");
 		}
 	}
@@ -90,9 +92,11 @@ public class Metodos {
 	public void checarCopias() {
 		for (int i = 0; i < cop.size(); i++) {
 			cop.get(i);
+			System.out.println("*********************************************************");
 			System.out.println("Número de referência: " + i);
 			System.out.println("Nome do filme: " + copia.getNome());
 			System.out.println("Status: " + this.statusCopia());
+			System.out.println("*********************************************************");
 			System.out.println("");
 		}
 	}
@@ -100,6 +104,7 @@ public class Metodos {
 	public void checarSocios() {
 		for (int i = 0; i < soc.size(); i++) {
 			soc.get(i);
+			System.out.println("*********************************************************");
 			System.out.println("Número: " + i);
 			System.out.println("Nome: " + socio.getNome());
 			System.out.println("Endereço: " + socio.getEndereco());
@@ -107,6 +112,7 @@ public class Metodos {
 			System.out.println("RG: " + socio.getRg());
 			System.out.println("CPF: " + socio.getCpf());
 			System.out.println("Data: " + socio.getData());
+			System.out.println("*********************************************************");
 			System.out.println("");
 		}
 	}
@@ -182,8 +188,10 @@ public class Metodos {
 	public void checarCopiasA( ) {
 		for (int i = 0; i < cop2.size(); i++) {
 			cop2.get(i);
+			System.out.println("*********************************************************");
 			System.out.println("Número de referência: " + i);
 			System.out.println("Nome do filme: " + copia.getNome());
+			System.out.println("*********************************************************");
 			System.out.println("");
 		}
 	}
