@@ -15,8 +15,8 @@ public class CopiaFilme {
 		return nome;
 	}
 
-	public void setAlugado(boolean alugado) {
-		this.alugado = alugado;
+	public boolean setAlugado(boolean alugado) {
+		return this.alugado = alugado;
 	}
 
 	public boolean getAlugado() {

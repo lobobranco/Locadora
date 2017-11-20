@@ -6,6 +6,7 @@ public class Metodos {
 	ArrayList<Filme> list = new ArrayList<>();
 	ArrayList<CopiaFilme> cop = new ArrayList<>();
 	ArrayList<Socio> soc = new ArrayList<>();
+	ArrayList<CopiaFilme> cop2 = new ArrayList<>();
 
 	Filme filme = new Filme();
 	CopiaFilme copia = new CopiaFilme();
@@ -117,18 +118,17 @@ public class Metodos {
 		if (this.pickSocio(socio) == true) {
 			System.out.println("Digite o nome do filme que vai ser alugado:");
 			String alug = teclado.nextLine(); 
-			if (this.pickFilme(alug) == true) {
-				if (this.pickCopia()==true) {
-					copia.setAlugado(true);
-					System.out.println("Cópia alugada com sucesso!");	
-					System.out.println("");
-				} else {
-					System.out.println("Não temos cópias disponíveis.");
-					System.out.println("");
+			for (int i = 0; i < cop.size(); i++) {
+				cop.get(i);
+				if (cop.get(i).getNome().equals(alug)){
+					System.out.println("É igual");
+					String nome = cop.get(i).getNome();
+					boolean alugada = cop.get(i).setAlugado(false);
+					CopiaFilme copia2 = new CopiaFilme(nome, alugada);
+					cop.remove(i);
+					cop2.add(copia2);
+					System.out.println("Cópia alugada com sucesso!");
 				}
-			} else {
-				System.out.println("Esse filme não está listado.");
-				System.out.println("");
 			}
 		}
 	}
@@ -141,11 +141,14 @@ public class Metodos {
 	}
 
 	public void devolução() {
-		this.pickCopia();
-		if (this.pickCopia() == false) {
-			copia.setAlugado(false);
+		for (int i = 0; i < cop2.size(); i++) {
+			cop2.get(i);
+			String nome = cop2.get(i).getNome();
+			boolean alugada = cop2.get(i).setAlugado(true);
+			CopiaFilme copia3 = new CopiaFilme(nome, alugada);
+			cop2.remove(i);
+			cop.add(copia3);
 			System.out.println("Devolução feita com sucesso!");
-			System.out.println(""); 
 		}
 	}
 
@@ -168,15 +171,14 @@ public class Metodos {
 		}
 		return false;
 	}
-
-	public boolean pickCopia () {
-		for (int i = 0; i < cop.size(); i++) {
-			cop.get(i);
-			if (copia.getAlugado() == false) {
-				return true;
-			}
-		} 
-		return false;
+	
+	public void checarCopiasA( ) {
+		for (int i = 0; i < cop2.size(); i++) {
+			cop2.get(i);
+			System.out.println("Número de referência: " + i);
+			System.out.println("Nome do filme: " + copia.getNome());
+			System.out.println("");
+		}
 	}
 
 }

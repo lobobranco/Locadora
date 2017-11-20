@@ -16,8 +16,9 @@ public class Sistema {
 			System.out.println("5 - Devolução");
 			System.out.println("6 - Lista de Filmes");
 			System.out.println("7 - Lista de Cópias");
-			System.out.println("8 - Lista de Sócios");
-			System.out.println("9 - Sair");
+			System.out.println("8 - Lista de Cópias Alugadas");
+			System.out.println("9 - Lista de Sócios");
+			System.out.println("10 - Sair");
 			System.out.println("Digite sua opção: ");
 			int opc = teclado.nextInt();
 			fimn=opc;
@@ -48,9 +49,12 @@ public class Sistema {
 				config.checarCopias();
 				break;
 			case 8:
-				config.checarSocios();
+				config.checarCopiasA();
 				break;
 			case 9:
+				config.checarSocios();
+				break;
+			case 10:
 				System.out.println("Finalizando Sistema!");
 			break;
 			default: 
@@ -58,7 +62,7 @@ public class Sistema {
 				System.out.println("");
 			break;
 			}
-		} while (fimn != 9); 
+		} while (fimn != 10); 
 		//teclado.close();
 	}
 }
